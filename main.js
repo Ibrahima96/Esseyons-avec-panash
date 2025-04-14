@@ -129,7 +129,7 @@ form.addEventListener("submit", (e) => {
     let motsDePasse = document.querySelector('#motsDePasse').value;
     let confirmationPasses = document.querySelector('#confirmationPasse').value;
 
-    // Vérifie si les mots de passe sont identiques
+   
     if (motsDePasse === confirmationPasses) {
         let newElement = document.createElement('div');
         let element = document.createElement('div');
@@ -165,6 +165,7 @@ form.addEventListener("submit", (e) => {
         inscriptionBtn.innerHTML = `<span class="text-secondary">${nom}👋</span>`;
     }
     // Sinon, ne rien faire (ni message d’erreur, ni création de carte)
+    
 });
 
 
