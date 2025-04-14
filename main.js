@@ -122,13 +122,18 @@ form.addEventListener("input", (e) => {
 // })
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-
+    NProgress.start(); // Démarre la progress bar
     let prenom = document.querySelector('#prenom').value;
     let nom = document.querySelector('#nom').value;
     let email = document.querySelector('#email').value;
     let motsDePasse = document.querySelector('#motsDePasse').value;
     let confirmationPasses = document.querySelector('#confirmationPasse').value;
-
+    setTimeout(function() {
+        NProgress.done(); // Termine la progress bar
+  
+        // Redirige vers l'accueil
+        // window.location.href = 'index.html';
+   
    
     if (motsDePasse === confirmationPasses) {
         let newElement = document.createElement('div');
@@ -165,7 +170,7 @@ form.addEventListener("submit", (e) => {
         inscriptionBtn.innerHTML = `<span class="text-secondary">${nom}👋</span>`;
     }
     // Sinon, ne rien faire (ni message d’erreur, ni création de carte)
-    
+}, 2000)
 });
 
 
