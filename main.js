@@ -49,7 +49,26 @@ document.getElementById('produitForm').addEventListener('submit', (e)=> {
     document.querySelector('tbody').appendChild(ceerProduit);
 })
 
+//filtrer les quantite et nomProduit
+document.getElementById('search').addEventListener('input', (e)=> {
+   
+    produitForm.innerHTML = '';
+    let searchValue = e.target.value.toLowerCase();
+    let produits = document.querySelectorAll('tbody tr');
+    produits.forEach((produit) => {
+        let nomProduit = produit.cells[0].textContent.toLowerCase();
+        let quantite = produit.cells[1].textContent.toLowerCase();
+        let libelle = produit.cells[2].textContent.toLowerCase();
+        if (nomProduit.includes(searchValue) || quantite.includes(searchValue) || libelle.includes(searchValue)) {
+            produit.style.display = 'table-row';
+        } else {
+            produit.style.display = 'none';
+        }
+    });
+    cachProduit.style.display = 'block';
 
+})
+   
 
 /*******************************************************************************************************************/
 form.addEventListener("input", (e) => {
@@ -168,6 +187,9 @@ form.addEventListener("submit", (e) => {
         form.reset();
         inscriptionBtn.disabled = true;
         inscriptionBtn.innerHTML = `<span class="text-secondary">${nom}👋</span>`;
+        // Hide the modal after submission
+        let modal = bootstrap.Modal.getInstance(document.getElementById('inscriptionModal'));
+        modal.hide(); // Add this line
     }
     // Sinon, ne rien faire (ni message d’erreur, ni création de carte)
 }, 2000)
@@ -220,5 +242,4 @@ let affichProduit=()=>{
 }
 
 /******************************************************************************************************************/
-
 
